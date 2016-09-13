@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MyConnection {
+public class MinhaConexao {
 	String host = "localhost";
 	String port = "5432";
 	String nomeBancoDados = "jensen2";
@@ -17,7 +17,7 @@ public class MyConnection {
 	private String user = "postgres";
 	private String password = "root";
 	
-	public MyConnection() {
+	public MinhaConexao() {
 		this.urlConnection = "jdbc:postgresql://" + host + ":" + port + "/" + nomeBancoDados;
 	}
 	
@@ -35,7 +35,7 @@ public class MyConnection {
     			stmt.close();
     			stmt = null;
     		} catch (SQLException ex) {
-    			Logger.getLogger(MyConnection.class.getName()).log(Level.SEVERE, null, ex);
+    			Logger.getLogger(MinhaConexao.class.getName()).log(Level.SEVERE, null, ex);
     		}	
     }
    
@@ -45,7 +45,7 @@ public class MyConnection {
     			conn.close();
     			conn = null;
     		} catch (SQLException ex) {
-    			Logger.getLogger(MyConnection.class.getName()).log(Level.SEVERE, null, ex);
+    			Logger.getLogger(MinhaConexao.class.getName()).log(Level.SEVERE, null, ex);
     		}
     }
     
@@ -54,7 +54,7 @@ public class MyConnection {
     		try {
     			rs.close();
     		} catch (SQLException ex) {
-    			Logger.getLogger(MyConnection.class.getName()).log(Level.SEVERE, null, ex);
+    			Logger.getLogger(MinhaConexao.class.getName()).log(Level.SEVERE, null, ex);
     		}
   	}
     

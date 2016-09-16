@@ -20,10 +20,17 @@ public class GerenciadorTransacao {
 		
 		while(numeroTransacoes > 0) {
 			ultimoIndice++;
-			listaTransacoes.add(new Transacao(dados, numeroAcessos, ultimoIndice));
+			Transacao novaTransacao = new Transacao(dados, numeroAcessos, ultimoIndice);
+			printTransacao(novaTransacao);
+			listaTransacoes.add(novaTransacao);
+			numeroTransacoes--;
 		}
 	}
 	
+	private void printTransacao(Transacao novaTransacao) {
+		
+	}
+
 	public LinkedList<Transacao> getListaTransacoes() {
 		return listaTransacoes;
 	}

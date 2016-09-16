@@ -70,4 +70,17 @@ public class Transacao {
 		this.rotuloTransacao = rotuloTransacao;
 	}
 
+	public boolean transIsEmpty() {
+		return filaOperacoes.isEmpty();
+	}
+
+	public Operacao getFirstOp() {
+		return filaOperacoes.getFirst();
+	}
+
+	public void removeOp() {
+		filaOperacoes.removeFirst();
+	}
+	
+
 }

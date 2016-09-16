@@ -12,7 +12,8 @@ public class Main {
 			while (true) {
 				ultimoIndice = TransacaoDao.pegarUltimoIndice();
 				gerenciador = new GerenciadorTransacao(numeroItens, numeroTransacoes, numeroAcessos, ultimoIndice);
-				TransacaoDao.gravarTransacoes(gerenciador);
+				Schedule schedule = new Schedule(gerenciador.getListaTransacoes());
+				TransacaoDao.gravarTransacoes(schedule);
 				System.out.println( "ok" );
 				Thread.sleep( 10 * 1000 );
 				System.out.println( "ok" );

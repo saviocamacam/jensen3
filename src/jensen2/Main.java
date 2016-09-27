@@ -8,16 +8,17 @@ public class Main {
 
 	public static void main(String[] args) {
 		int ultimoIndice = 0;
+		System.out.println( "Criando transacoes e gravando no banco..." );
 		try {
-			while (true) {
+			do {
 				ultimoIndice = TransacaoDao.pegarUltimoIndice();
 				gerenciador = new GerenciadorTransacao(numeroItens, numeroTransacoes, numeroAcessos, ultimoIndice);
 				Schedule schedule = new Schedule(gerenciador.getListaTransacoes());
 				TransacaoDao.gravarTransacoes(schedule);
-				System.out.println( "ok" );
+				//System.out.println( "ok" );
 				Thread.sleep( 10 * 1000 );
-				System.out.println( "ok" );
-			}
+				//System.out.println( "ok" );
+			} while(true);
 		}catch (InterruptedException e) {
 			e.printStackTrace();
  		}

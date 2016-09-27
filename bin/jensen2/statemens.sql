@@ -1,7 +1,8 @@
-CREATE TABLE transacao (
-  idTransaction SERIAL,
+CREATE TABLE schedule (
+  idOperacao SERIAL,
   indiceTransacao INTEGER,
-  operacao CHAR,
+  operacao VARCHAR(10),
   itemDado VARCHAR(10),
-  CONSTRAINT pk_constraint PRIMARY KEY (idTransaction)
+  timestampj VARCHAR(15),
+  CONSTRAINT pk_constraint PRIMARY KEY (idOperacao)
 )

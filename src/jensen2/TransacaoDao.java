@@ -4,19 +4,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class TransacaoDao {
 	private static MinhaConexao minhaConexao;
 	
 	public TransacaoDao() {
 		minhaConexao = new MinhaConexao();
+		MinhaConexao.getCabecalho();
 	}
 
 	public static void gravarTransacoes(Schedule schedule) {
 		Operacao operacao = null;
 		
 		Connection conn = minhaConexao.getConnection();
-		String sql = "INSERT INTO schedule(indiceTransacao, operacao, itemDado) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO schedule(indiceTransacao, operacao, itemDado, timestampj) VALUES (?, ?, ?, ?)";
 		PreparedStatement stmt = null;
 		while(!schedule.getScheduleInList().isEmpty()) {
 			operacao = schedule.getScheduleInList().removeFirst();
@@ -25,6 +28,7 @@ public class TransacaoDao {
 				stmt.setInt(1, operacao.getIndice());
 				stmt.setString(2, operacao.getAcesso().texto);
 				stmt.setString(3, operacao.getDado().getNome());
+				stmt.setString(4, new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
 				stmt.executeUpdate();
 			} catch (SQLException e) {
 				System.out.println("Erro na insercao da transacao");

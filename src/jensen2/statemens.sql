@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS schedule;
 CREATE TABLE schedule (
   idOperacao SERIAL,
   indiceTransacao INTEGER,

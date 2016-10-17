@@ -7,7 +7,9 @@ import java.util.stream.IntStream;
 public class Transacao {
 	private int meuIndice;
 	private LinkedList<Operacao> filaOperacoes;
+	private LinkedList<Dado> conjuntoDados;
 	private String rotuloTransacao;
+	private int indexNovo;
 	
 	public Transacao(ListaDados dados, int numeroAcessos, int ultimoIndice) {
 		meuIndice = ultimoIndice;
@@ -17,6 +19,11 @@ public class Transacao {
 		ramdomizaOperacoes(dados.getDados(), numeroAcessos);
 		filaOperacoes.add(new Operacao(Acesso.END, ultimoIndice));
 	}
+	
+	public Transacao(Integer index) {
+    	this.setIndexNovo(index);
+    	this.setConjuntoDados(new LinkedList<>());
+    }
 
 	private void ramdomizaOperacoes(LinkedList<Dado> dados, int numeroAcessos) {
 		 int tamanhoConjunto = dados.size();
@@ -80,6 +87,28 @@ public class Transacao {
 
 	public void removeOp() {
 		filaOperacoes.removeFirst();
+	}
+
+	public int getIndexNovo() {
+		return indexNovo;
+	}
+
+	public void setIndexNovo(int indexNovo) {
+		this.indexNovo = indexNovo;
+	}
+
+	public LinkedList<Dado> getConjuntoDados() {
+		return conjuntoDados;
+	}
+
+	public void setConjuntoDados(LinkedList<Dado> conjuntoDados) {
+		this.conjuntoDados = conjuntoDados;
+	}
+	
+	public boolean containsDado(Dado dado) {
+		if(conjuntoDados.contains(dado))
+			return true;
+		else return false;
 	}
 	
 

@@ -22,7 +22,7 @@ public class Produtor extends Thread {
 				ultimoIndice = TransacaoDao.pegarUltimoIndice();
 				gerenciador = new GerenciadorTransacao(numeroItens, numeroTransacoes, numeroAcessos, ultimoIndice);
 				Schedule schedule = new Schedule(gerenciador.getListaTransacoes());
-				TransacaoDao.gravarTransacoes(schedule);
+				TransacaoDao.gravarTransacoes(schedule, "scheduleIn");
 				//System.out.println( "ok" );
 				Thread.sleep( 3 * 1000 );
 				//System.out.println( "ok" );

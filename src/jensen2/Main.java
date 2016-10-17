@@ -20,6 +20,16 @@ public class Main {
 			produtor.setFlag(false);
 		}
 		
+		Schedule scheduleIn = TransacaoDao.buscarTransacoes(0);
+		Schedule scheduleOut = null;
+		Escalonador escalonador = new Escalonador();
+		
+		do{
+			scheduleOut = escalonador.escalonar(scheduleIn);
+			TransacaoDao.gravarTransacoes(scheduleOut, "scheduleOut");
+			scheduleIn = TransacaoDao.buscarTransacoes(scheduleIn.getScheduleInList().getLast().getIdOperacao());
+		} while (true);
+		
 	}
 
 }

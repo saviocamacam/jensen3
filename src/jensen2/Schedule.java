@@ -12,6 +12,10 @@ public class Schedule {
 		ligaOperacoes(transacoes);
 	}
 
+	public Schedule() {
+		
+	}
+
 	private void ligaOperacoes(LinkedList<Transacao> transacoes) {
 		Random r = new Random();
 		while( !transacoes.isEmpty() ){
@@ -31,6 +35,10 @@ public class Schedule {
 
 	public void setScheduleInList(LinkedList<Operacao> scheduleInList) {
 		this.scheduleInList = scheduleInList;
+	}
+	
+	public LinkedList<Operacao> getScheduleinlist() {
+		return scheduleInList;
 	}
 
 }
